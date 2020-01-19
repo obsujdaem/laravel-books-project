@@ -10,3 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Http\Controllers\AddBookController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/add/book', [AddBookController::class, 'index']);
+Route::post('/add/book', [AddBookController::class, 'store']);
