@@ -17,10 +17,10 @@ class CreateBooksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('author_id')->unsigned();
-            $table->foreign('author_id')->references('id')->on('authors');
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
             $table->integer('year');
             $table->bigInteger('edition_id')->unsigned();
-            $table->foreign('edition_id')->references('id')->on('editions');
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
             });
     }
 

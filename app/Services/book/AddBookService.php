@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\book;
 
 use App\Models\AssessmentModel;
 use App\Models\BookModel;
-use Illuminate\Support\Facades\DB;
 
 class AddBookService
 {
@@ -19,16 +18,6 @@ class AddBookService
         $book->edition_id = $request->edition;
 
         $book->save();
-
-        $assessment = new AssessmentModel();
-
-        $assessment->assessment = $request->assessment;
-        $assessment->book_id = $book->id;
-        $assessment->reader_id = $request->reader;
-
-        $assessment->save();
-
-        BookModel::where('id', "$book->id")->update(['assessment_id' => $assessment->id]);
 
         return;
     }

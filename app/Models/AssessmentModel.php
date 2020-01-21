@@ -13,7 +13,7 @@ class AssessmentModel extends Model
 
     public function readers()
     {
-        return $this->hasMany('App\Models\ReaderModel', 'reader_id');
+        return $this->hasMany('App\Models\ReaderModel', 'id', 'reader_id');
     }
 
     public function books()

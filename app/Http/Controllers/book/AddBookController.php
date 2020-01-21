@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\book;
 
+use App\Services\book\AddBookService;
 use App\Http\Requests\addBookRequest;
 use App\Models\AuthorModel;
 use App\Models\EditionModel;
-use App\Models\ReaderModel;
-use App\Services\AddBookService;
+use Illuminate\Routing\Controller;
 
 class AddBookController extends Controller
 {
@@ -14,27 +14,24 @@ class AddBookController extends Controller
     {
         $authors = AuthorModel::all();
         $editions = EditionModel::all();
-        $readers = ReaderModel::all();
 
-        return view('addBook', [
+        return view('book/addBook', [
             'authors' => $authors,
-            'editions' => $editions,
-            'readers' => $readers
+            'editions' => $editions
         ]);
     }
 
     public function store(addBookRequest $request, AddBookService $service)
     {
+
         $service->save($request);
 
         $authors = AuthorModel::all();
         $editions = EditionModel::all();
-        $readers = ReaderModel::all();
 
-        return view('addBook', [
+        return view('book/addBook', [
             'authors' => $authors,
-            'editions' => $editions,
-            'readers' => $readers
+            'editions' => $editions
         ]);
     }
 }

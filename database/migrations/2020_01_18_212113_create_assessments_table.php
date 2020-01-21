@@ -17,9 +17,9 @@ class CreateAssessmentsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('assessment')->unsigned();
             $table->bigInteger('reader_id')->unsigned();
-            $table->foreign('reader_id')->references('id')->on('readers');
+            $table->foreign('reader_id')->references('id')->on('readers')->onDelete('cascade');
             $table->bigInteger('book_id')->unsigned();
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
         });
     }
 
