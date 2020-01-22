@@ -23,4 +23,18 @@ class BooksService
 
         return;
     }
+
+    public function update($request)
+    {
+        BookModel::where('id', $request->book_id)
+            ->first()
+            ->update([
+                'name' => $request->name,
+                'author_id' => $request->author,
+                'year' => $request->year,
+                'edition_id' => $request->edition
+            ]);
+
+        return;
+    }
 }

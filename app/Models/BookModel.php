@@ -8,31 +8,29 @@ class BookModel extends Model
 {
     protected $connection = 'mysql';
     protected $table = 'books';
+    protected $fillable = [
+      'name', 'author_id', 'year', 'edition_id'
+    ];
 
     public $timestamps = false;
 
     public function author()
     {
-        return $this->hasOne('App\Models\AuthorModel', 'id');
+        return $this->belongsTo(AuthorModel::class);
     }
 
     public function edition()
     {
-        return $this->hasOne('App\Models\EditionModel', 'id');
+        return $this->belongsTo(EditionModel::class);
     }
 
     public function assessments()
     {
-        return $this->hasMany('App\Models\AssessmentModel', 'book_id', 'id');
+        return $this->hasMany(AssessmentModel::class, 'book_id', 'id');
     }
 
-    public function city()
+    public function readers()
     {
-        return $this->hasOne('App\Models\CityModel', 'id');
+        return $this->hasMany(ReaderModel::class, 'reader_id', 'book_id');
     }
-
-//    public function allReaders()
-//    {
-//        return $this->hasManyThrough('App\Models\ReaderModel', 'App\Models\AssessmentModel', 'reader_id', 'id', 'id');
-//    }
 }

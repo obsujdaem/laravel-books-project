@@ -51,7 +51,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="">
+                        <a href="{{route('books.list.edit', $book->id)}}">
                             <i class="far fa-edit" style="font-size: 25px;"></i>
                         </a>
                     </td>

@@ -20,6 +20,7 @@
                 <th scope="col">edition</th>
                 <th scope="col">city</th>
                 <th scope="col">country</th>
+                <th scope="col">owner</th>
                 <th scope="col">readers</th>
                 <th scope="col">assessment</th>
                 <th scope="col">average rate</th>
@@ -32,15 +33,17 @@
                 <td>{{$book->author->patronymic}} {{$book->author->name}} {{$book->author->surname}}</td>
                 <td>{{$book->year}}</td>
                 <td>{{$book->edition->name}}</td>
-                <td>{{$book->city->name}}</td>
-                <td>{{$book->city->country->name}}</td>
+                <td>{{$book->edition->city->name}}</td>
+                <td>{{$book->edition->city->country->name}}</td>
+                <td>{{$book->edition->owner->patronymic}} {{$book->edition->owner->name}} {{$book->edition->owner->surname}}
+                </td>
                 <td>
                     @if(count($book->assessments) > 0)
                         @foreach($book->assessments as $reader_id)
-                            @foreach($reader_id->readers as $reader)
-                                {{$reader->patronymic}} {{$reader->name}} {{$reader->surname}}
-                                <br>
-                            @endforeach
+                            {{$reader_id->reader->patronymic}}
+                            {{$reader_id->reader->surname}}
+                            {{$reader_id->reader->name}}
+                            <br>
                         @endforeach
                     @else
                         -

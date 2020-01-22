@@ -11,13 +11,13 @@ class EditionModel extends Model
 
     public $timestamps = false;
 
-    public function cities()
+    public function city()
     {
-        return $this->hasMany('App\Models\CityModel', 'city_id');
+        return $this->hasOne('App\Models\CityModel', 'id');
     }
 
-    public function owners()
+    public function owner()
     {
-        return $this->hasMany('App\Models\OwnerModel', 'owner_id');
+        return $this->hasOne('App\Models\OwnerModel', 'id', 'owner_id');
     }
 }

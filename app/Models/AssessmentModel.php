@@ -11,9 +11,9 @@ class AssessmentModel extends Model
 
     public $timestamps = false;
 
-    public function readers()
+    public function reader()
     {
-        return $this->hasMany('App\Models\ReaderModel', 'id', 'reader_id');
+        return $this->hasOne('App\Models\ReaderModel', 'id', 'reader_id');
     }
 
     public function books()

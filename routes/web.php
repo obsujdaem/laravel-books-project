@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/books', [BooksController::class, 'index'])->name('books.list');
 Route::get('/books/{id}/delete', [BooksController::class, 'delete'])->name('books.list.delete');
 Route::get('/books/{id}/detailed', [BooksController::class, 'detailed'])->name('books.list.detailed');
+Route::get('/books/{id}/edit', [BooksController::class, 'edit'])->name('books.list.edit');
+Route::post('/books/update', [BooksController::class, 'update'])->name('book.list.update');
 
 Route::get('/books/add', [AddBookController::class, 'index'])->name('books.add');
 Route::post('/books/add', [AddBookController::class, 'store']);
