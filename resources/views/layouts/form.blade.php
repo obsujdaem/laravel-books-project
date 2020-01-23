@@ -71,6 +71,9 @@
     @else
     @endif
     <li>
+        <a href="{{route('books.search.view')}}">search book</a>
+    </li>
+    <li>
         <a href="{{route('books.add')}}">add book</a>
     </li>
     <li>

@@ -70,6 +70,7 @@
         }
 
     </style>
+    <script src="https://kit.fontawesome.com/0b74392391.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -77,6 +78,9 @@
 </header>
 <aside class="col-md-4 col-lg-3">
     <ul style="list-style: none">
+        <li>
+            <a href="{{route('books.search.view')}}">search book</a>
+        </li>
         <li>
             <a href="{{route('books.list')}}">books list</a>
         </li>

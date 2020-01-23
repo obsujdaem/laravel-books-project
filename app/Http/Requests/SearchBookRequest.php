@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class AssessmentRequest extends BooksRequest
+class SearchBookRequest extends BooksRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +22,8 @@ class AssessmentRequest extends BooksRequest
     public function rules()
     {
         return [
-            'rate' => self::INTEGER . '|between:0,100'
+            'filter' => 'required|alpha',
+            'search' => 'required'
         ];
     }
 }
