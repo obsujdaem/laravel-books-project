@@ -6,13 +6,10 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 
 use App\Models\AuthorModel;
-use Illuminate\Console\Command;
 use Symfony\Component\DomCrawler\Crawler;
 
-class parserAuthorsCommand extends Command
+class parserAuthorsCommand extends BooksCommand
 {
-    private $start = 1;
-    private const URL = 'https://book24.ua';
     /**
      * The name and signature of the console command.
      *
@@ -53,6 +50,7 @@ class parserAuthorsCommand extends Command
 
             $crawler = new Crawler($html);
 
+            // parsing Images
             $crawler = $crawler->filter('div.vendors-section-list > div > div > a > span > span.image > img')
                 ->each(function (Crawler $node) {
                     return $node->attr('src');
@@ -71,6 +69,7 @@ class parserAuthorsCommand extends Command
 
             $this->info("parser images from page: $this->start finished");
 
+            // parsing Authors
             if ($this->start <= $this->argument('pages')) {
                 $crawler = new Crawler($html);
                 $crawler = $crawler->filter('span.item > span.item-title')
